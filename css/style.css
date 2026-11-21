@@ -184,6 +184,7 @@ button { font-family: inherit; cursor: pointer; }
 
 /* ---------- cart drawer ---------- */
 .cart-overlay { position: fixed; inset: 0; z-index: 60; background: rgba(5,5,8,.65); backdrop-filter: blur(3px); }
+.cart-overlay[hidden], .cart-drawer[hidden] { display: none; }
 .cart-drawer {
   position: fixed; top: 0; right: 0; bottom: 0; z-index: 61;
   width: min(420px, 92vw); background: var(--panel); border-left: 1px solid var(--line);
