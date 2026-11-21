@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOIRDROP — Drop 03: Neon District</title>
+  <meta name="description" content="Noirdrop is a dark, neon streetwear drop-store template. One page, one drop, zero noise." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+  </script>
+</head>
+<body>
+
+  <header class="nav">
+    <a class="wordmark" href="#top">NOIRDROP<sup>®</sup></a>
+    <nav class="nav-links">
+      <a href="#drop">The Drop</a>
+      <a href="#feel">Feel It</a>
+      <a href="#about">About</a>
+    </nav>
+    <button id="cartBtn" class="cart-btn" aria-label="Open bag">
+      BAG <span id="cartCount" class="cart-count" hidden>0</span>
+    </button>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <canvas id="hero3d" aria-hidden="true"></canvas>
+      <div class="hero-fade" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="badge"><span class="badge-dot"></span> DROP 03 — NEON DISTRICT</p>
+        <h1 class="hero-title">WE MAKE<br />GEAR YOU<br /><em>CAN FEEL</em></h1>
+        <p class="hero-sub">Six pieces. One night palette. Heavyweight fabrics, chain-stitched,
+          built for the hours after the city lights come on.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-red" href="#drop">SHOP THE DROP</a>
+          <a class="btn btn-ghost" href="#feel">WHAT IS THIS</a>
+        </div>
+        <div class="countdown" id="countdown" aria-label="Time until the drop closes">
+          <div><span id="cdD">--</span><small>DAYS</small></div>
+          <div><span id="cdH">--</span><small>HRS</small></div>
+          <div><span id="cdM">--</span><small>MIN</small></div>
+          <div><span id="cdS">--</span><small>SEC</small></div>
+        </div>
+      </div>
+      <p class="hero-scroll">SCROLL ↓</p>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track" id="marqueeTrack"></div>
+    </div>
+
+    <!-- ============ PRODUCTS ============ -->
+    <section id="drop" class="drop">
+      <header class="section-head">
+        <h2>THE DROP</h2>
+        <p>Six pieces. When the timer dies, they're gone.</p>
+      </header>
+      <div class="grid" id="productGrid"></div>
+      <p class="demo-note">Demo catalog — sample products and prices, shown to preview the template.</p>
+    </section>
+
+    <!-- ============ FEEL IT ============ -->
+    <section id="feel" class="feel">
+      <div class="feel-inner">
+        <div class="feel-copy">
+          <h2 class="neon">BUILT TO<br />BE FELT</h2>
+          <p>Every piece in Drop 03 is shot the way it feels after midnight: rim light,
+            heavy shadow, no polish. 420gsm fleece, gunmetal hardware, chain-stitch
+            hems. You don't wear this drop. You carry it.</p>
+          <ul class="feel-specs">
+            <li><b>420</b><span>GSM fleece</span></li>
+            <li><b>06</b><span>pieces</span></li>
+            <li><b>01</b><span>drop, no restock</span></li>
+          </ul>
+        </div>
+        <figure class="feel-img">
+          <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1000&q=80"
+               alt="Model in red sunglasses lit by teal neon light" loading="lazy" />
+          <figcaption>SHOT AFTER DARK — NEON DISTRICT</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about" class="about">
+      <h2>ONE PAGE.<br />ONE DROP. <span class="stroke">ZERO NOISE.</span></h2>
+      <p>Noirdrop is a single-page drop-store template. A hero with a live 3D centerpiece,
+        a countdown, a tight product grid, and a bag drawer — nothing else, because a drop
+        doesn't need anything else. Swap the products, set your date, ship it.</p>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p class="footer-word">NOIRDROP</p>
+    <p class="demo-note">Demo catalog — sample products and prices, shown to preview the template.</p>
+    <div class="footer-row">
+      <span>© NOIRDROP template</span>
+      <span>Photos: Unsplash demo assets</span>
+      <span>Made for the dark hours</span>
+    </div>
+  </footer>
+
+  <!-- ============ CART DRAWER ============ -->
+  <div id="cartOverlay" class="cart-overlay" hidden></div>
+  <aside id="cartDrawer" class="cart-drawer" aria-label="Shopping bag" hidden>
+    <header>
+      <h3>YOUR BAG</h3>
+      <button id="cartClose" aria-label="Close bag">✕</button>
+    </header>
+    <div id="cartItems" class="cart-items"></div>
+    <footer>
+      <div class="cart-total"><span>Subtotal</span><b id="cartTotal">$0</b></div>
+      <button id="checkoutBtn" class="btn btn-red btn-block">CHECKOUT</button>
+      <p class="demo-note">Demo store — checkout is a preview and places no real order.</p>
+    </footer>
+  </aside>
+
+  <div id="toast" class="toast" role="status" hidden></div>
+
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/hero3d.js"></script>
+</body>
+</html>
