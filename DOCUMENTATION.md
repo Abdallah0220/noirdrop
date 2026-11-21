@@ -96,8 +96,12 @@ Fonts in `index.html`. Swap the `<link>` and the two variables above to change.
   the hero's radial-gradient background remains. Nothing else depends on it.
 - To disable it entirely, delete the `<canvas id="hero3d">` line and the
   `<script type="module" src="js/hero3d.js">` line in `index.html`.
-- The knot, wireframe shell, shards and light intensities are all plain values
-  in `js/hero3d.js` if you want a different centerpiece.
+- The knot, twin wireframe shells, grid floor, ember field, shards and light
+  intensities are all plain values in `js/hero3d.js` if you want a different
+  centerpiece.
+- The scene pauses when scrolled off-screen or on a hidden tab, and drops to
+  lighter particle counts on small screens. With `prefers-reduced-motion` it
+  renders one still frame instead of animating.
 
 ## 7. The bag
 

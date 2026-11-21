@@ -11,8 +11,8 @@ because a drop doesn't need anything else.
 - `index.html` — the whole page (hero, marquee, drop grid, "feel it" section, about, footer, bag drawer)
 - `css/style.css` — the full theme (colors and fonts are CSS variables at the top)
 - `js/products.js` — **the demo catalog: edit this file to sell your own pieces**
-- `js/main.js` — grid, bag drawer (localStorage), countdown, marquee, scroll reveals
-- `js/hero3d.js` — the Three.js hero (loads from CDN, removes itself if WebGL is unavailable)
+- `js/main.js` — grid, bag drawer (localStorage), countdown, marquee, scroll reveals, card tilt, magnetic CTAs, nav state, scroll progress
+- `js/hero3d.js` — the Three.js hero: metallic knot, twin wireframe shells, neon grid floor, ember field, orbiting red/cyan lights, pointer/tilt parallax (loads from CDN, removes itself if WebGL is unavailable)
 
 No build step. No dependencies to install. Host it anywhere static files go.
 
@@ -34,7 +34,10 @@ See **DOCUMENTATION.md** for the full buyer guide.
 - The bag is a front-end demo: it persists in `localStorage` and the checkout
   button shows a demo notice. It places no real orders.
 - Demo photos are Unsplash sample images; replace them with your own product shots.
-- Honors `prefers-reduced-motion`.
+- Honors `prefers-reduced-motion`: the 3D hero renders a single still frame and
+  all entrance/tick/tilt animations switch off.
+- The hero pauses rendering while it is scrolled out of view or the tab is
+  hidden, and lowers particle counts and pixel ratio on small screens.
 
 ## Honest limits
 

@@ -29,6 +29,8 @@ button { font-family: inherit; cursor: pointer; }
   display: flex; align-items: center; justify-content: space-between;
   padding: 18px 28px;
   background: linear-gradient(to bottom, rgba(10,10,14,.9), transparent);
+  border-bottom: 1px solid transparent;
+  transition: background .3s, padding .3s, border-color .3s;
 }
 .wordmark { font-family: var(--display); font-size: 22px; letter-spacing: .12em; }
 .wordmark sup { color: var(--red); font-size: 10px; }
@@ -239,7 +241,71 @@ button { font-family: inherit; cursor: pointer; }
   .hero { padding-inline: 18px; }
   .drop, .feel-inner, .about { padding-inline: 18px; }
 }
+/* ---------- animation layer (v2) ---------- */
+
+/* scroll progress */
+.scroll-progress { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 90; pointer-events: none; }
+.scroll-progress span {
+  display: block; height: 100%; transform: scaleX(0); transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--red), var(--cyan));
+  box-shadow: 0 0 8px rgba(0,229,255,.5);
+}
+
+/* nav condenses once you scroll */
+.nav.scrolled {
+  background: rgba(10,10,14,.86);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom-color: var(--line);
+  padding-block: 12px;
+}
+
+/* hero entrance: masked line reveal + staggered fade-ups */
+.ht-line { display: block; overflow: hidden; }
+.ht-in {
+  display: inline-block; transform: translateY(112%);
+  animation: htUp .9s cubic-bezier(.2,.9,.25,1) forwards;
+}
+.ht-line:nth-child(2) .ht-in { animation-delay: .12s; }
+.ht-line:nth-child(3) .ht-in { animation-delay: .24s; }
+@keyframes htUp { to { transform: translateY(0); } }
+
+.hero .badge, .hero-sub, .hero-ctas, .countdown, .hero-scroll {
+  opacity: 0; animation: fadeUp .8s ease forwards;
+}
+.hero .badge { animation-delay: .05s; }
+.hero-sub { animation-delay: .3s; }
+.hero-ctas { animation-delay: .42s; }
+.countdown { animation-delay: .55s; }
+.hero-scroll { animation: fadeUp .8s ease .9s forwards, bob 2.4s ease-in-out 1.7s infinite; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes bob { 50% { transform: translateY(-5px); } }
+
+/* countdown digit tick */
+.countdown span.tick { animation: cdTick .35s ease; }
+@keyframes cdTick { 0% { transform: translateY(-6px); opacity: .25; } 100% { transform: none; opacity: 1; } }
+
+/* card 3D lean + neon glare (fine pointers only; vars set from JS) */
+@media (pointer: fine) {
+  .card {
+    transform: perspective(950px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  }
+  .card:hover {
+    transform: perspective(950px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-6px);
+  }
+  .card::after {
+    content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    opacity: 0; transition: opacity .25s;
+    background: radial-gradient(340px circle at var(--mx, 50%) var(--my, 50%), rgba(0,229,255,.13), transparent 65%);
+  }
+  .card:hover::after { opacity: 1; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .marquee-track, .badge-dot, .neon { animation: none; }
   html { scroll-behavior: auto; }
+  .ht-in, .hero .badge, .hero-sub, .hero-ctas, .countdown, .hero-scroll {
+    animation: none !important; opacity: 1 !important; transform: none !important;
+  }
+  .countdown span.tick { animation: none; }
 }
